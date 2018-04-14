@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 
+RED="\e[31m"
+CYAN="\e[36m"
+YELLOW="\e[33m"
+GREEN="\e[32m"
+RESET="\e[0m"
+
+function succ { printf "${GREEN}$1${RESET}\n"; }
+function fail {
+    printf "${RED}FAIL: $1${RESET}\n" >&2
+    exit 1
+}
+
 payload="$1"
 app_root="$2"
 info="$app_root/Contents/Info.plist"
