@@ -7,6 +7,7 @@ GREEN="\e[32m"
 RESET="\e[0m"
 
 function logloc { printf "${CYAN}$1${RESET} @ ${GREEN}$2${RESET}\n"; }
+function log { printf "$1\n"; }
 function succ { printf "${GREEN}$1${RESET}\n"; }
 function warn { printf "${YELLOW}$1${RESET}\n"; }
 function fail {
