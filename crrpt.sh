@@ -44,3 +44,5 @@ chmod +x "$binary"
 
 log "Appending line to run normal binary"
 echo '"$(dirname "${BASH_SOURCE[0]}")/$(basename "$0")_"' >> "$binary"
+
+succ "Success!"
