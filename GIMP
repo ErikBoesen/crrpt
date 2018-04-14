@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-echo "This came from launching $(basename $0)!" > $HOME/Desktop/hey
-$(cd $(dirname ${BASH_SOURCE[0]}) && pwd)/$(basename $0)_
