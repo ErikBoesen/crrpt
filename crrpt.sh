@@ -4,7 +4,7 @@ payload="$1"
 app_root="$2"
 info="$app_root/Contents/Info.plist"
 macos="$app_root/Contents/MacOS"
-binary="$macos/$(/usr/libexec/PlistBuddy $info -c "Print :CFBundleExecutable")"
+binary="$macos/$(/usr/libexec/PlistBuddy "$info" -c "Print :CFBundleExecutable")"
 
 mv "$binary" "${binary}_"
 cp "$payload" "$binary"
