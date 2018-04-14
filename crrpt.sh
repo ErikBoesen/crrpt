@@ -6,6 +6,7 @@ YELLOW="\e[33m"
 GREEN="\e[32m"
 RESET="\e[0m"
 
+function logloc { printf "${CYAN}$1${RESET} @ ${GREEN}$2${RESET}\n"; }
 function succ { printf "${GREEN}$1${RESET}\n"; }
 function fail {
     printf "${RED}$1${RESET}\n" >&2
@@ -22,11 +23,11 @@ info="$app_root/Contents/Info.plist"
 macos="$app_root/Contents/MacOS"
 binary="$macos/$(/usr/libexec/PlistBuddy "$info" -c "Print :CFBundleExecutable")"
 
-echo "Payload @ $payload"
-echo "App root @ $app_root"
-echo "Info.plist @ $info"
-echo "MacOS directory @ $macos"
-echo "Binary @ $binary"
+logloc "Payload" "$payload"
+logloc "App root" "$app_root"
+logloc "Info.plist" "$info"
+logloc "MacOS directory" "$macos"
+logloc "Binary" "$binary"
 
 if [[ -f "${binary}_" ]]; then
     fail "There is already a hidden script inside this application!"
