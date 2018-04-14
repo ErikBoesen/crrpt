@@ -12,6 +12,10 @@ function fail {
     exit 1
 }
 
+if [[ $# -lt 2 ]]; then
+    fail "Not enough arguments!"
+fi
+
 payload="$1"
 app_root="$2"
 info="$app_root/Contents/Info.plist"
