@@ -14,7 +14,7 @@ function fail {
     exit 1
 }
 function logloc {
-    if [[ -f "$2" ]] || [[ -d "$2" ]]; then
+    if [[ -e "$2" ]]; then
         printf "${CYAN}$1${RESET} @ ${GREEN}$2${RESET}\n"
     else
         fail "$1 not present (at $2)."
