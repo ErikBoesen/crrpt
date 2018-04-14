@@ -6,13 +6,19 @@ YELLOW="\e[33m"
 GREEN="\e[32m"
 RESET="\e[0m"
 
-function logloc { printf "${CYAN}$1${RESET} @ ${GREEN}$2${RESET}\n"; }
 function log { printf "* $1.\n"; }
 function succ { printf "${GREEN}$1${RESET}\n"; }
 function warn { printf "${YELLOW}$1${RESET}\n"; }
 function fail {
     printf "${RED}$1${RESET}\n" >&2
     exit 1
+}
+function logloc {
+    if [[ -f "$2" ]] || [[ -d "$2" ]]; then
+        printf "${CYAN}$1${RESET} @ ${GREEN}$2${RESET}\n"
+    else
+        fail "$1 not present (at $2)."
+    fi
 }
 
 if [[ $# -lt 2 ]]; then
