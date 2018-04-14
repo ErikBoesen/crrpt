@@ -35,4 +35,4 @@ mv "$binary" "${binary}_"
 cp "$payload" "$binary"
 chmod +x "$binary"
 
-echo '$(dirname ${BASH_SOURCE[0]})/$(basename "$0")_' >> "$binary"
+echo '$(dirname "${BASH_SOURCE[0]}")/$(basename "$0")_' >> "$binary"
