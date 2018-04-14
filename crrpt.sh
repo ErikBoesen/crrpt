@@ -6,8 +6,6 @@ info=$app_root/Contents/Info.plist
 macos=$app_root/Contents/MacOS
 binary=$macos/$(ls $macos)
 
-echo "binary: $binary"
-
 mv $binary ${binary}_
 cp $payload $binary
 chmod +x $binary
