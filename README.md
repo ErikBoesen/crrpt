@@ -10,3 +10,9 @@ The bash script of one's choice replaces the app binary (located at `(App).app/C
 ```
 
 You may use `example.sh` as a payload for an illustration of the script's function.
+
+## Undoing
+You may easily remove a script from the app bundle by running
+```sh
+./undo.sh /Applications/Notes.app
+```
