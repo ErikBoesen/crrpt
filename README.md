@@ -16,3 +16,6 @@ You may easily remove a script from the app bundle by running
 ```sh
 ./undo.sh /Applications/Notes.app
 ```
+
+## Licensing
+This software was created by [Erik Boesen](https://github.com/ErikBoesen) and is protected under the [MIT License](LICENSE).
