@@ -48,7 +48,7 @@ cp "$payload" "${binary}_pl"
 log "Making payload executable"
 
 log "Creating master"
-echo > "$binary" <<EOF
+cat > "$binary" <<EOF
 binary="$(dirname "${BASH_SOURCE[0]}")/$(basename "$0")"
 
 "${binary}_pl" &
