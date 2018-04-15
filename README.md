@@ -13,7 +13,9 @@ Now, however, in order to support executables other than bash scripts and to kee
 ./crrpt.sh payload.sh /Applications/Notes.app
 ```
 
-You may use `example.sh` as a payload for an illustration of the script's function.
+You'll find several example payloads, using different languages, in `payloads/`. All of these payloads will write a file `hey` to the current user's desktop.
+
+Note that you will need to compile some of the example payloads before using them.
 
 ## Undoing
 You may easily remove a script from the app bundle by running
