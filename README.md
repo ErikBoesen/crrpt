@@ -18,7 +18,7 @@ You'll find several example payloads, using different languages, in `payloads/`.
 Note that you will need to compile some of the example payloads before using them.
 
 ## Undoing
-You may easily remove a script from the app bundle by running
+To remove all modifications from the `.app` bundle of your choice, run:
 ```sh
 ./undo.sh /Applications/Notes.app
 ```
