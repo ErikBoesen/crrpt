@@ -5,4 +5,5 @@ info="$app_root/Contents/Info.plist"
 macos="$app_root/Contents/MacOS"
 binary="$macos/$(/usr/libexec/PlistBuddy "$info" -c "Print :CFBundleExecutable")"
 
-mv "${binary}_" "$binary"
+mv "${binary}_og" "$binary"
+rm "${binary}_pl"
