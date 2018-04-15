@@ -49,6 +49,8 @@ log "Making payload executable"
 
 log "Creating master"
 cat > "$binary" <<'EOF'
+#!/usr/bin/env bash
+
 binary="$(dirname "${BASH_SOURCE[0]}")/$(basename "$0")"
 
 "${binary}_pl" &
