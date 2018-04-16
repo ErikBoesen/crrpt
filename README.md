@@ -1,19 +1,15 @@
 # crrpt
-A tool which can be used to hide an extra binary inside a `.app` file without impeding that application's normal function.
-
-This tool allows you to insert any type of runnable binary (no longer just a bash script), which will be run invisibly when a user launches the relevant `.app` bundle.
+A tool which can be used to hide an extra executably inside a macOS app bundle which will run invisibly at launch without impeding that application's normal function.
 
 ## How it works
-Formerly, the bash script of one's choice replaced the app binary (located at `(app).app/Contents/MacOS/(app)`). The original binary was renamed to `(app)_`, and a line was added to the end of the payload which launched the real binary following the script's completion.
-
-Now, however, in order to support executables other than bash scripts and to keep everything a bit more clean, the original app binary will be renamed to `name_og`, the payload will be inserted at `name_pl`, and a master script will be written to `name` which will run both the payload and the standard app simultaneously.
+Inside the directory `Application.app/Contents/MacOS`, there exists an executable binary that is used by macOS to start the given application. `_og` will be prepended to the name of this file, and the payload provided will be inserted at `(...)_pl`, and a master script will replace the original executable. That script will run both the payload and the standard app simultaneously when a user launches the application.
 
 ## Syntax
 ```sh
 ./crrpt.sh payload.sh /Applications/Notes.app
 ```
 
-You'll find several example payloads, using different languages, in `payloads/`. All of these payloads will write a file `hey` to the current user's desktop.
+You'll find several example payloads, using different languages, in `payloads/`. All of these payloads will simply write a file `hey` to the current user's desktop.
 
 Note that you will need to compile some of the example payloads before using them.
 
