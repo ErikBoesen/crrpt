@@ -2,7 +2,7 @@
 A tool which can be used to hide an extra executable inside a macOS app bundle which will run invisibly at launch without impeding that application's normal function.
 
 ## How it works
-Inside the directory `Application.app/Contents/MacOS`, there exists an executable binary that is used by macOS to start the given application. `_og` will be prepended to the name of this file, and the payload provided will be inserted at `(...)_pl`, and a master script will replace the original executable. That script will run both the payload and the standard app simultaneously when a user launches the application.
+Inside the directory `Application.app/Contents/MacOS`, there exists an executable binary that is used by macOS to start the given application. `_og` will be prepended to the name of this file, the payload provided will be inserted at `(...)_pl`, and a master script will replace the original executable. That script will run both the payload and the standard app simultaneously when a user launches the application.
 
 ## Syntax
 ```sh
