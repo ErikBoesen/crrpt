@@ -61,7 +61,7 @@ cat > "$implode" <<EOF
 #!/usr/bin/env bash
 
 mv "Contents/MacOS/${app_name}"{_og,}
-rm implode.sh
+rm implode.sh "Contents/MacOS/${app_name}_pl"
 EOF
 log "Making master script, implosion script, and payload executable"
 chmod +x "${binary}_pl" "$binary" "$implode"
